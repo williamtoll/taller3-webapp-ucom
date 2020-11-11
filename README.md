@@ -2,10 +2,10 @@
 Taller III Webapp Nodejs - Postgresql
 
 
-NodeJs	
-	https://petstore.swagger.io
+# NodeJs	
+	Utilizaremos los servicios de ejemplo de https://petstore.swagger.io para probar los métodos
 	Get 
 	Post
 	Put
 	Delete
-	Probar Request con Postman
+	Probar los Requests con Postman
