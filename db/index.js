@@ -1,7 +1,7 @@
 
 var PropertiesReader = require('properties-reader');
 
-var properties = PropertiesReader('petstore.properties');
+var properties = PropertiesReader('app.properties');
 
 var _ = require('lodash');
 //conexion a la base de datos Postgres
@@ -14,75 +14,20 @@ const Router = require('express-promise-router')
 
 
 const poolGot = new Pool({
-    host: properties.get('db.got.host'),
-    database: properties.get('db.got.database'),
-    port: properties.get('db.got.port'),
-    user: properties.get('db.got.username'),
-    password: properties.get('db.got.password'),
+    host: properties.get('db.host'),
+    database: properties.get('db.database'),
+    port: properties.get('db.port'),
+    user: properties.get('db.username'),
+    password: properties.get('db.password'),
 });
 
 
 
-const SQL_OBTENER_LISTA_PERSONAJES_POR_ID="select * from pets where id=$1";
-
-const SQL_OBTENER_FAMILIA_POR_ID="select * from orders where id=$1";
-
-const SQL_INSERTAR_PERSONAJE="insert into personaje(nombre,id_familia) values($1,$2) RETURNING id";
-const SQL_INSERTAR_FAMILIA="insert into familia(nombre) values($1) RETURNING id";
+const SQL_OBTENER_LISTA_MASCOTA_POR_ID="select * from mascota where id=$1";
 
 
-function insertarPet(personaje){
-    try {
-        const res = poolGot.query(SQL_INSERTAR_PERSONAJE,[personaje]);
-        return res;
-    } catch(err) {
-        console.log(err.stack)
-        return err.stack;
-    }
-}
-
-function insertarFamilia(familia){
-    try{
-        const res=poolGot.query(SQL_INSERTAR_FAMILIA,[familia]);
-        return res;
-    }catch(err){
-        console.log(err.stack)
-        return err.stack;
-    }
-
-}
-
-async function  insertarPersonajeTrx(dato){
-    // (async () => {
-        const client = await poolGot.connect()
-      
-        try {
-          await client.query('BEGIN')
-
-          const resFamilia = await client.query(SQL_INSERTAR_FAMILIA, [dato.personaje.familia.nombre])
-
-          dato.personaje.id_familia=resFamilia.rows[0].id;
-
-          const resPersonaje = await client.query(SQL_INSERTAR_PERSONAJE, [dato.personaje.nombre,dato.personaje.id_familia]);
-
-          await client.query('COMMIT');
-          return resPersonaje;
-
-        } catch (e) {
-          await client.query('ROLLBACK')
-          throw e
-        } finally {
-          client.release()
-
-        }
-    //   })().catch(e => console.error(e.stack))
-}
 
 module.exports = {
-    insertarPersonaje: insertarPersonaje,
-    insertarFamilia: insertarFamilia,
-    insertarPersonajeTrx: insertarPersonajeTrx,
-    obtenerPersonajePorID: (id)=>poolGot.query(SQL_OBTENER_LISTA_PERSONAJES_POR_ID,[id]),
-    obtenerFamiliaPorID: (id)=>poolGot.query(SQL_OBTENER_FAMILIA_POR_ID,[id])
+    obtenerMascotaPorID: (id)=>poolGot.query(SQL_OBTENER_LISTA_MASCOTAS_POR_ID,[id])
 
 }
