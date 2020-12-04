@@ -28,6 +28,7 @@ router.get('/obtener-por-id/:id', cors(), async (req, res, next) => {
 
 });
 
+//Ejemplo de como insertar una mascota, le pasamos los datos del req.body a la función insertarMascota
 router.post('/insertar',cors(),async(req,res,next)=>{
   console.log("insertar mascota")
   var result={};

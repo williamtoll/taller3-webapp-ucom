@@ -27,8 +27,8 @@ const SQL_OBTENER_LISTA_MASCOTA_POR_ID="select * from mascota where id_mascota=$
 const SQL_INSERTAR_MASCOTA="insert into mascota(nombre,id_categoria) values($1,$2) RETURNING id_mascota";
 
 function insertarMascota(datos){
-    console.log("host ", properties.get('db.host'));
-
+    console.log("db => insertarMascota ")
+    console.log("datos =>", datos)
     try {
         const res = pool.query(SQL_INSERTAR_MASCOTA,[datos.nombre,datos.id_categoria]);
         console.log("res", res);
