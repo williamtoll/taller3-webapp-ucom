@@ -13,7 +13,7 @@ const {
 const Router = require('express-promise-router')
 
 
-const poolGot = new Pool({
+const pool = new Pool({
     host: properties.get('db.host'),
     database: properties.get('db.database'),
     port: properties.get('db.port'),
@@ -23,11 +23,23 @@ const poolGot = new Pool({
 
 
 
-const SQL_OBTENER_LISTA_MASCOTA_POR_ID="select * from mascota where id=$1";
+const SQL_OBTENER_LISTA_MASCOTA_POR_ID="select * from mascota where id_mascota=$1";
+const SQL_INSERTAR_MASCOTA="insert into mascota(nombre,id_categoria) values($1,$2) RETURNING id_mascota";
 
+function insertarMascota(datos){
+    console.log("host ", properties.get('db.host'));
 
+    try {
+        const res = pool.query(SQL_INSERTAR_MASCOTA,[datos.nombre,datos.id_categoria]);
+        console.log("res", res);
+        return res;
+    } catch(err) {
+        console.log(err.stack)
+        return err.stack;
+    }
+}
 
 module.exports = {
-    obtenerMascotaPorID: (id)=>poolGot.query(SQL_OBTENER_LISTA_MASCOTAS_POR_ID,[id])
-
+    obtenerMascotaPorID: (id)=>pool.query(SQL_OBTENER_LISTA_MASCOTA_POR_ID,[id]),
+    insertarMascota: insertarMascota,
 }
