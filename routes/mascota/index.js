@@ -28,6 +28,40 @@ router.get('/obtener-por-id/:id', cors(), async (req, res, next) => {
 
 });
 
+router.get('/obtener-por-categoria', cors(), async (req, res, next) => {
+  console.log("obtener mascota por categoria");
+  console.log("request ",req)
+  console.log("id_categoria",req.query.id_categoria)
+  let result =await db.obtenerMascotasPorCategoria(req.query.id_categoria);
+  console.log("result ",result);
+  res.send(result.rows);
+
+});
+
+
+router.get('/obtener-por-cliente-tipo', cors(), async (req, res, next) => {
+  console.log("obtener mascota por cliente - tipo");
+  console.log("request ",req)
+  console.log("id_cliente",req.query.id_cliente)
+  console.log("tipo_mascota ",req.query.tipo_mascota)
+  let filtro="";
+
+  if(req.query.id_cliente){
+    filtro=" and c.id_cliente = "+req.query.id_cliente
+  }
+
+  if(req.query.tipo_mascota){
+    filtro+=" and c3.nombre ='"+req.query.tipo_mascota+"'"; 
+  }
+
+  //console.log(" filtro ",filtro)
+
+  let result =await db.obtenerMascotasPorClienteTipo(req.query)
+  console.log("result ",result);
+  res.send(result.rows);
+
+});
+
 //Ejemplo de como insertar una mascota, le pasamos los datos del req.body a la función insertarMascota
 router.post('/insertar',cors(),async(req,res,next)=>{
   console.log("insertar mascota")
@@ -45,6 +79,33 @@ router.post('/insertar',cors(),async(req,res,next)=>{
 
 });
 
+router.put('/actualizar',cors(),async(req,res,next)=>{
+  console.log("actualizar mascota")
+  var result={};
+  console.log("params", req.body);
+
+  var mascota=req.body;
+  result= await db.actualizarMascota(mascota);
+
+
+  res.send("Mascota actualizada");
+  
+
+});
+
+
+router.delete('/eliminar/:id/:id_categoria',cors(),async(req,res,next)=>{
+  console.log("request desde el lado cliente",req)
+  console.log("parametros ", req.params);
+  console.log("eliminar mascota por ID ", req.params.id);
+  var result={};
+
+  result= await db.eliminarMascota(req.params.id);
+
+  res.send("Mascota eliminada");
+
+
+});
 
 router.get('/test',cors(), async (req, res, next) => {
   console.log("test")
