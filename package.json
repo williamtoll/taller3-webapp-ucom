@@ -1,5 +1,5 @@
 {
-  "name": "app tienda mascotas",
+  "name": "app-tienda-mascotas",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
