@@ -25,7 +25,7 @@ const pool = new Pool({
 
 const SQL_OBTENER_LISTA_MASCOTA_POR_ID="select * from mascota where id_mascota=$1";
 const SQL_INSERTAR_MASCOTA="insert into mascota(nombre,id_categoria) values($1,$2) RETURNING id_mascota";
-
+const SQL_OBTENER_CATEGORIA_POR_ID="select * from categoria where id=$1";
 function insertarMascota(datos){
     console.log("db => insertarMascota ")
     console.log("datos =>", datos)
@@ -42,4 +42,5 @@ function insertarMascota(datos){
 module.exports = {
     obtenerMascotaPorID: (id)=>pool.query(SQL_OBTENER_LISTA_MASCOTA_POR_ID,[id]),
     insertarMascota: insertarMascota,
+    obtenerCategoriaPorID: (id)=>pool.query(SQL_OBTENER_CATEGORIA_POR_ID,[id]),
 }
