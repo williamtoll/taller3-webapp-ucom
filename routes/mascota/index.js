@@ -42,23 +42,14 @@ router.get('/obtener-por-categoria', cors(), async (req, res, next) => {
 router.get('/obtener-por-cliente-tipo', cors(), async (req, res, next) => {
   console.log("obtener mascota por cliente - tipo");
   console.log("request ",req)
-  console.log("id_cliente",req.query.id_cliente)
+  console.log("nombre_cliente",req.query.nombre_cliente)
   console.log("tipo_mascota ",req.query.tipo_mascota)
-  let filtro="";
+  console.log("nombre_mascota ",req.query.nombre_mascota)
 
-  if(req.query.id_cliente){
-    filtro=" and c.id_cliente = "+req.query.id_cliente
-  }
-
-  if(req.query.tipo_mascota){
-    filtro+=" and c3.nombre ='"+req.query.tipo_mascota+"'"; 
-  }
-
-  //console.log(" filtro ",filtro)
 
   let result =await db.obtenerMascotasPorClienteTipo(req.query)
   console.log("result ",result);
-  res.send(result.rows);
+  res.send(result);
 
 });
 

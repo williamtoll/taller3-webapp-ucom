@@ -43,7 +43,7 @@ const SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO="select cm.id, "+
 "left join cliente c on c.id_cliente = cm.id_cliente " +
 "left join mascota m on m.id_mascota =cm.id_mascota "+
 "left join categoria c3 on c3.id =m.id_categoria "+ 
-"where 2=2  and c.id_cliente=$1 and c3.nombre=$2";
+"where 2=2  and c.nombre=$1 and c3.nombre=$2 and m.nombre=$3";
 
 function insertarMascota(datos){
     console.log("db => insertarMascota ")
@@ -71,13 +71,16 @@ function actualizarMascota(datos){
     }
 }
 
-function obtenerMascotasPorClienteTipo(parametros){
+async function obtenerMascotasPorClienteTipo(parametros){
     console.log("parametros ", parametros)
     console.log("SQL ",SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO)
-    try{
-        pool.query(SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO,[parseInt(parametros.id_cliente),parametros.tipo_mascota])
-    }catch(err){
-        console.log(err)
+    const client = await pool.connect()
+    try {
+        const res = await client.query(SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO, [parametros.nombre_cliente,parametros.tipo_mascota,parametros.nombre_mascota])
+        console.log(res.rows[0])
+        return res.rows;
+    } finally {
+        client.release()
     }
 }
 
