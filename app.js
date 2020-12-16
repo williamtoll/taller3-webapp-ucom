@@ -72,7 +72,7 @@ expressSwagger(optionsExpressSwagger)
 // routes ======================================================================
 app.use('/mascota', mascotasRoutes);
 app.use('/categoria',categoriaRoutes);
-
+app.use(express.static(__dirname + '/webapp'));
 // launch ======================================================================
 
 app.listen(port);
