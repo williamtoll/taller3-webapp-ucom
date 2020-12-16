@@ -16,6 +16,8 @@ var serviciosRoutes = require('./routes/servicio');
 
 
 
+var categoriaRoutes= require('./routes/categoria')
+
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
@@ -75,7 +77,7 @@ expressSwagger(optionsExpressSwagger)
 app.use('/mascota', mascotasRoutes);
 app.use('/cliente', clientesRoutes);
 app.use('/servicio', serviciosRoutes);
-
+app.use('/categoria',categoriaRoutes);
 
 // launch ======================================================================
 
