@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Enviar datos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+    <style>
+      #tblListaMascotas {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #tblListaMascotas td,
+      #tblListaMascotas th {
+        border: 3px solid #ddd;
+        padding: 8px;
+      }
+
+      #tblListaMascotas tr:nth-child(even) {
+        background-color: #5a5858;
+      }
+
+      #tblListaMascotas tr:hover {
+        background-color: #ddd;
+      }
+
+      #tblListaMascotas th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4caf50;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <table id="tblListaMascotas">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Dueño</th>
+        <th>Fecha Ult. Servicio</th>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Tobby</td>
+        <td>Perro</td>
+        <td>Deysi Gonzalez</td>
+        <td>10/12/2020</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Tortu</td>
+        <td>Tortuga</td>
+        <td>Jose Lopez</td>
+        <td>15/03/2020</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Tapiti</td>
+        <td>Conejo</td>
+        <td>Crisiano Ronaldo</td>
+        <td>10/06/2020</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Bobby</td>
+        <td>Perro</td>
+        <td>Alfredo Cazenave</td>
+        <td>12/05/2020</td>
+      </tr>
+    </table> -->
+
+    <table id="tblListaMascotas">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Cliente</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+  </body>
+  <script src="js/lista_mascotas.js" ></script>
+</html>

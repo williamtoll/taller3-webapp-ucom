@@ -45,6 +45,21 @@ const SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO="select cm.id, "+
 "left join categoria c3 on c3.id =m.id_categoria "+ 
 "where 2=2  and c.nombre=$1 and c3.nombre=$2 and m.nombre=$3";
 
+
+const SQL_OBTENER_LISTA_MASCOTAS="select cm.id, "+
+"c.id_cliente ,  "+
+"c.nombre as nombre_cliente,"+
+"c.apellido as apellido_cliente,"+ 
+"m.id_mascota,  "+
+"m.nombre as nombre_mascota, "+
+"c3.id ,"+
+"c3.nombre as tipo "+
+"from cliente_mascota cm "+ 
+"left join cliente c on c.id_cliente = cm.id_cliente " +
+"left join mascota m on m.id_mascota =cm.id_mascota "+
+"left join categoria c3 on c3.id =m.id_categoria "+ 
+"where 2=2 ";
+
 function insertarMascota(datos){
     console.log("db => insertarMascota ")
     console.log("datos =>", datos)
@@ -86,6 +101,7 @@ async function obtenerMascotasPorClienteTipo(parametros){
 
 module.exports = {
     obtenerMascotaPorID: (id)=>pool.query(SQL_OBTENER_LISTA_MASCOTA_POR_ID,[id]),
+    obtenerListaMascotas: ()=>pool.query(SQL_OBTENER_LISTA_MASCOTAS,[]),
     insertarMascota: insertarMascota,
     eliminarMascota: (id)=>pool.query(SQL_ELIMINAR_MASCOTA_POR_ID,[id]),
     obtenerMascotasPorCategoria: (id_categoria)=>pool.query(SQL_OBTENER_MASCOTA_POR_CATEGORIA,[id_categoria]),

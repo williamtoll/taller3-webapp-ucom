@@ -53,6 +53,18 @@ router.get('/obtener-por-cliente-tipo', cors(), async (req, res, next) => {
 
 });
 
+router.get('/obtener-lista', cors(), async (req, res, next) => {
+  console.log("obtener lista mascotas");
+  console.log("request ",req)
+
+
+
+  let result =await db.obtenerListaMascotas()
+  console.log("result ",result.rows);
+  res.send(result.rows);
+
+});
+
 //Ejemplo de como insertar una mascota, le pasamos los datos del req.body a la función insertarMascota
 router.post('/insertar',cors(),async(req,res,next)=>{
   console.log("insertar mascota")
