@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "9886c549-ff17-4d13-ab8b-5a3b0282a601",
+		"name": "tienda_mascotas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obtener_mascotas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/mascota/obtener-lista",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"obtener-lista"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener-mascotas-por-categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/mascota/obtener-por-categoria?id_categoria=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"obtener-por-categoria"
+					],
+					"query": [
+						{
+							"key": "id_categoria",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener-mascotas-por-cliente-tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/mascota/obtener-por-cliente-tipo?nombre_cliente=Cristiano&tipo_mascota=perro&nombre_mascota=tobby",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"obtener-por-cliente-tipo"
+					],
+					"query": [
+						{
+							"key": "nombre_cliente",
+							"value": "Cristiano"
+						},
+						{
+							"key": "tipo_mascota",
+							"value": "perro"
+						},
+						{
+							"key": "nombre_mascota",
+							"value": "tobby"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar mascota",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/mascota/eliminar/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"eliminar",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertar-mascota",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"pancho\",\r\n    \"id_categoria\":\"3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/mascota/insertar",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"insertar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar mascota",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"pancho\",\r\n    \"id_categoria\":\"3\",\r\n    \"id_mascota\": 14\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/mascota/actualizar",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test-servicio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/mascota/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"mascota",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener_categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3005/categoria/obtener-por-id/9",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"categoria",
+						"obtener-por-id",
+						"9"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

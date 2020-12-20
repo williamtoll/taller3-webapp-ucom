@@ -78,7 +78,7 @@ app.use('/mascota', mascotasRoutes);
 app.use('/cliente', clientesRoutes);
 app.use('/servicio', serviciosRoutes);
 app.use('/categoria',categoriaRoutes);
-
+app.use(express.static(__dirname + '/webapp'));
 // launch ======================================================================
 
 app.listen(port);
