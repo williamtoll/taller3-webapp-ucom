@@ -26,6 +26,24 @@ router.get('/obtener-por-cliente/:cliente/:tipo', cors(), async (req, res, next)
 
 });
 
+//Ejemplo de como recibir parametros en la petición GET, en este caso recibido el parametro cliente
+router.get('/obtener-por-fecha-cliente/:cliente/:fecha', cors(), async (req, res, next) => {
+  console.log("obtener servicio por cliente y fecha ", req.params.cliente+"-"+req.params.fecha);
+  let result = await db.obtenerServicioPorClienteFecha(req.params.cliente,req.params.fecha);
+  console.log("servicios por fecha", result[0]);
+  res.send(result.rows);
+
+});
+
+//Ejemplo de como recibir parametros en la petición GET, en este caso recibido el parametro cliente
+router.get('/obtener-por-fecha-estado/:estado/:fecha', cors(), async (req, res, next) => {
+  console.log("obtener servicio por estado y fecha ", req.params.estado+"-"+req.params.fecha);
+  let result = await db.obtenerServicioPorEstadoFecha(req.params.estado,req.params.fecha);
+  console.log("servicios por estado y fecha", result[0]);
+  res.send(result.rows);
+
+});
+
 
 
 router.get('/test',cors(), async (req, res, next) => {
