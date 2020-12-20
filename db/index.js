@@ -47,6 +47,21 @@ const SQL_OBTENER_MASCOTAS_POR_CLIENTE_Y_TIPO="select cm.id, "+
 "left join categoria c3 on c3.id =m.id_categoria "+ 
 "where 2=2  and c.nombre=$1 and c3.nombre=$2 and m.nombre=$3";
 
+const SQL_OBTENER_LISTA_SERVICIOS_POR_CLIENTES_POR_FECHA="select s.id_cliente , c.nombre , c.apellido , "+
+"s.fecha_servicio , s.estado "+
+"from servicio s left join cliente c on c.id_cliente =s.id_cliente "+
+"left join tipo_servicio ts on ts.id_tipo_servicio =s.id_tipo_servicio "+
+"WHERE c.id_cliente =$1 and s.fecha_servicio =$2 "+
+"order by s.id_cliente asc, s.fecha_servicio desc, s.estado desc";
+
+const SQL_OBTENER_LISTA_SERVICIOS_POR_ESTADO_POR_FECHA="select s.id_cliente , c.nombre , c.apellido , "+
+"s.fecha_servicio , s.estado "+
+"from servicio s left join cliente c on c.id_cliente =s.id_cliente "+
+"left join tipo_servicio ts on ts.id_tipo_servicio =s.id_tipo_servicio "+
+"WHERE s.estado =$1 and s.fecha_servicio =$2 "+
+"order by s.id_cliente asc, s.fecha_servicio desc, s.estado desc";
+
+
 function insertarMascota(datos){
     console.log("db => insertarMascota ")
     console.log("datos =>", datos)
@@ -96,4 +111,7 @@ module.exports = {
     obtenerMascotasPorClienteTipo:obtenerMascotasPorClienteTipo ,
     actualizarMascota: actualizarMascota,
     obtenerCategoriaPorID: (id)=>pool.query(SQL_OBTENER_CATEGORIA_POR_ID,[id]),
+    obtenerServicioPorClienteFecha: (cliente,fecha)=>pool.query(SQL_OBTENER_LISTA_SERVICIOS_POR_CLIENTES_POR_FECHA,[cliente, fecha]),
+    obtenerServicioPorEstadoFecha: (estado,fecha)=>pool.query(SQL_OBTENER_LISTA_SERVICIOS_POR_ESTADO_POR_FECHA,[estado, fecha]),
+
 }
