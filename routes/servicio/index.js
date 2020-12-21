@@ -44,6 +44,32 @@ router.get('/obtener-por-fecha-estado/:estado/:fecha', cors(), async (req, res, 
 
 });
 
+router.get('/obtener-lista', cors(), async (req, res, next) => {
+  console.log("obtener lista de servicios");
+  console.log("request ",req)
+
+  let result =await db.obtenerListaServicios()
+  console.log("result ",result.rows);
+  res.send(result.rows);
+
+});
+
+router.post('/insertar',cors(),async(req,res,next)=>{
+  console.log("insertar servicio")
+  var result={};
+  console.log("params", req.body);
+
+  var servicio=req.body;
+  result= await db.insertarServicio(servicio);
+
+  if(result.rows){
+      res.send(result.rows[0]);
+  }else{
+      res.send("No se pudo insertar");
+  }
+
+});
+
 
 
 router.get('/test',cors(), async (req, res, next) => {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Enviar datos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/global.css">
+  </head>
+
+  <body>
+    <div class="navbar">
+        <!--<a href="index.html">Inicio</a>
+        <a href="lista_mascotas.html">Mascotas</a>
+        <a href="lista_clientes.html">Clientes</a>
+        <a href="lista_servicios.html">Servicios</a>
+        <a href="lista_articulos.html">Articulos</a>
+        <a href="lista_ventas.html">Ventas</a>-->
+        <a href="lista_ventas.html">Ventas</a>
+        <a href="lista_articulos.html">Articulos</a>
+        <a href="lista_servicios.html">Servicios</a>
+        <a href="lista_clientes.html">Clientes</a>
+        <a href="lista_mascotas.html">Mascotas</a>
+        <a href="index.html">Inicio</a>
+      </div>
+      <br /><br />
+      <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Ventas</h1>
+    <!--<br />-->
+    <form action="./crear_venta.html">
+      <input type="submit" value="Nueva Venta" />
+    </form>
+    <table  class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Nro de factura</th>
+          <th>Monto Total</th>
+          <th>Estado</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyListaVentas">
+      </tbody>
+    </table>
+  </body>
+  <script src="js/lista_ventas.js" ></script>
+
+</html>

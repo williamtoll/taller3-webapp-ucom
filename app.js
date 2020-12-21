@@ -13,10 +13,11 @@ const expressSwagger = require('express-swagger-generator')(app);
 var mascotasRoutes = require('./routes/mascota');
 var clientesRoutes = require('./routes/cliente');
 var serviciosRoutes = require('./routes/servicio');
+var categoriaRoutes= require('./routes/categoria');
+var articuloRoutes= require('./routes/articulo');
+var tipoServicioRoutes= require('./routes/tipo_servicio');
+var ventaRoutes= require('./routes/venta');
 
-
-
-var categoriaRoutes= require('./routes/categoria')
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -78,6 +79,13 @@ app.use('/mascota', mascotasRoutes);
 app.use('/cliente', clientesRoutes);
 app.use('/servicio', serviciosRoutes);
 app.use('/categoria',categoriaRoutes);
+app.use('/articulo',articuloRoutes);
+app.use('/tipo_servicio',tipoServicioRoutes);
+app.use('/venta',ventaRoutes);
+
+
+
+
 app.use(express.static(__dirname + '/webapp'));
 // launch ======================================================================
 

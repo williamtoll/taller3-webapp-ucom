@@ -18,8 +18,8 @@ function listaMascotas() {
             console.log("fila: ", value, " indice: " + index);
       
             // Agregamos las filas
-            var row = tabla.insertRow(index + 1);
-          
+            //var row = tabla.insertRow(index + 1);
+            row = tbody.insertRow();
             //Agregamos las columnas de la fila
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -28,9 +28,14 @@ function listaMascotas() {
         
             // Agregamos a la celda los valores que obtenemos de la lista 
             cell1.innerHTML = "" + value.id;
-            cell2.innerHTML = "" + value.nombre_mascota;
+            cell2.innerHTML = "" + value.nombre_mascota ;
             cell3.innerHTML = "" + value.tipo;
-            cell4.innerHTML = "" + value.nombre_cliente;
+            cell4.innerHTML = "" + value.nombre_cliente + " " + value.apellido_cliente;
+            
+            /*row = tabla1.insertRow();
+            cell = row.insertCell();
+            cell.innerHTML = Math.random();*/
+            
           });
 
       })
@@ -46,7 +51,10 @@ function listaMascotas() {
   }
   
   var tabla = document.getElementById("tblListaMascotas");
-  
+  var tbody = document.getElementById("tbody");
+
+  //var tabla = document.getElementById('tblListaMascotas').getElementsByTagName('tbody');
+
   function listaMascotasDemo() {
     console.log("listaMascotasDemo");
     let listaMascotas = [
@@ -127,7 +135,7 @@ function listaMascotas() {
     });
   }
   
-  function addHeader() {
+ /* function addHeader() {
     var table = document.getElementById("tblListaMascotas");
     var head = document.createElement("THEAD");
     var column = document.createElement("TH");
@@ -154,7 +162,7 @@ function listaMascotas() {
     table.appendChild(head);
   
 
-  }
+  }*/
   //Ejecutamos la función lista de mascotas
   //listaMascotasDemo();
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nuevo servicio</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <link rel="stylesheet" href="./css/global.css">
+    <script>
+      window.onload = function(){
+      var fecha = new Date(); //Fecha actual
+      var mes = fecha.getMonth()+1; //obteniendo mes
+      var dia = fecha.getDate(); //obteniendo dia
+      var ano = fecha.getFullYear(); //obteniendo año
+      if(dia<10)
+        dia='0'+dia; //agrega cero si el menor de 10
+      if(mes<10)
+        mes='0'+mes //agrega cero si el menor de 10
+        document.getElementById('fecha').value=ano+"-"+mes+"-"+dia;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="navbar">
+      <!--<a href="index.html">Inicio</a>
+      <a href="lista_mascotas.html">Mascotas</a>
+      <a href="lista_clientes.html">Clientes</a>
+      <a href="lista_servicios.html">Servicios</a>
+      <a href="lista_articulos.html">Articulos</a>
+      <a href="lista_ventas.html">Ventas</a>-->
+      <a href="lista_ventas.html">Ventas</a>
+      <a href="lista_articulos.html">Articulos</a>
+      <a href="lista_servicios.html">Servicios</a>
+      <a href="lista_clientes.html">Clientes</a>
+      <a href="lista_mascotas.html">Mascotas</a>
+      <a href="index.html">Inicio</a>
+    </div>
+    <br /><br />
+    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Nueva Orden de Servicio</h1>
+
+    <div class="back">
+      <form action="">
+        <label for="fecha">Fecha del servicio</label>
+        <br />
+
+        <input
+          type="date"
+          id="fecha"
+          name="fecha"
+          placeholder=""
+        />
+
+        <br />
+
+        <label for="cliente">Cliente</label>
+
+        <select id="cliente" name="cliente" onchange="listaMascotas(this.value);">
+          <option value="0">Seleccione un cliente</option>
+        </select>
+
+        <br />
+        <label for="mascota">Mascota</label>
+
+        <select id="mascota" name="mascota" >
+          <option value="0">Seleccione una mascota</option>
+
+        </select>
+
+        <label for="tipo_servicio">Servicio</label>
+        <select id="tipo_servicio" name="tipo_servicio">
+          <option value="0">Seleccione un servicio</option>
+        </select>
+
+        <br /><br />
+        <input type="button" id="btn-enviar" value="Guardar" />
+        <input
+          type="button"
+          onclick="location.href = './lista_servicios.html';"
+          value="Salir"
+        />
+      </form>
+    </div>
+  </body>
+  <script src="js/crear_servicio.js"></script>
+</html>

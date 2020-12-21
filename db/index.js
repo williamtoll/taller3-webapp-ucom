@@ -76,6 +76,37 @@ const SQL_OBTENER_LISTA_MASCOTAS="select cm.id, "+
 "left join categoria c3 on c3.id =m.id_categoria "+ 
 "where 2=2 ";
 
+// Consultas Articulos
+const SQL_INSERTAR_ARTICULO="insert into articulo(descripcion, precio_publico, precio_mayorista, activo) values($1,$2,$3,$4) RETURNING id_articulo";
+const SQL_OBTENER_LISTA_ARTICULOS="select * from articulo ";
+const SQL_OBTENER_ARTICULO_POR_ID="select * from articulo where id_articulo=$1";
+const SQL_ACTUALIZAR_ARTICULO="update articulo set descripcion=$1, precio_publico=$2, precio_mayorista=$3, activo=$4 where id_articulo=$5";
+const SQL_ELIMINAR_ARTICULO_POR_ID="delete from articulo where id_articulo=$1";
+
+
+const SQL_OBTENER_LISTA_SERVICIOS="select s.id_servicio, "+
+" c.nombre , c.apellido , m.nombre as mascota, cat.nombre as categoria, " +
+" ts.nombre_servicio, s.fecha_servicio , s.estado "+
+"from servicio s left join cliente c on c.id_cliente =s.id_cliente "+
+"left join mascota m on m.id_mascota =s.id_mascota "+
+"left join categoria cat on cat.id =m.id_categoria "+
+"left join tipo_servicio ts on ts.id_tipo_servicio =s.id_tipo_servicio "+
+"order by s.fecha_servicio desc";
+
+const SQL_OBTENER_LISTA_CLIENTES="select * from cliente ";
+const SQL_OBTENER_MASCOTA_POR_CLIENTE="select m.id_mascota, m.nombre from mascota m "+
+"left join cliente_mascota cm on cm.id_mascota=m.id_mascota "+
+"where cm.id_cliente=$1";
+
+const SQL_OBTENER_LISTA_TIPO_SERVICIOS="select * from tipo_servicio ";
+
+const SQL_INSERTAR_SERVICIO="insert into servicio(id_cliente,id_mascota,"+
+"id_tipo_servicio,fecha_servicio,estado) values($1,$2,$3,$4,$5) RETURNING id_servicio";
+
+const SQL_INSERTAR_VENTA="insert into venta(fecha_venta, id_cliente, monto_total, nro_factura, activo) " + 
+" values($1,$2,$3,$4,$5) RETURNING id_venta";
+const SQL_OBTENER_LISTA_VENTAS="select * from venta v inner join cliente c on v.id_cliente=c.id_cliente ";
+
 function insertarMascota(datos){
     console.log("db => insertarMascota ")
     console.log("datos =>", datos)
@@ -115,6 +146,58 @@ async function obtenerMascotasPorClienteTipo(parametros){
     }
 }
 
+function insertarArticulo(datos){
+    console.log("db => insertarArticulo ")
+    console.log("datos =>", datos)
+    try {
+        const res = pool.query(SQL_INSERTAR_ARTICULO,[datos.descripcion,datos.precio_publico, datos.precio_mayorista, datos.activo]);
+        console.log("res", res);
+        return res;
+    } catch(err) {
+        console.log(err.stack)
+        return err.stack;
+    }
+}
+
+function actualizarArticulo(datos){
+    console.log("db => actualizarArticulo ")
+    console.log("datos =>", datos)
+    try {
+        const res = pool.query(SQL_ACTUALIZAR_ARTICULO,[datos.descripcion,datos.precio_publico,datos.precio_mayorista,datos.activo,datos.id_articulo]);
+        console.log("res", res);
+        return res;
+    } catch(err) {
+        console.log(err.stack)
+        return err.stack;
+    }
+}
+
+function insertarServicio(datos){
+    console.log("db => insertarServicio ")
+    console.log("datos =>", datos)
+    try {
+        const res = pool.query(SQL_INSERTAR_SERVICIO,[datos.id_cliente,datos.id_mascota,datos.id_tipo_servicio,datos.fecha_servicio,datos.estado]);
+        console.log("res", res);
+        return res;
+    } catch(err) {
+        console.log(err.stack)
+        return err.stack;
+    }
+}
+
+function insertarVenta(datos){
+    console.log("db => insertarVenta ")
+    console.log("datos =>", datos)
+    try {
+        const res = pool.query(SQL_INSERTAR_VENTA,[datos.fecha_venta,datos.id_cliente, datos.monto_total, datos.nro_factura,datos.activo]);
+        console.log("res", res);
+        return res;
+    } catch(err) {
+        console.log(err.stack)
+        return err.stack;
+    }
+}
+
 module.exports = {
     obtenerMascotaPorID: (id)=>pool.query(SQL_OBTENER_LISTA_MASCOTA_POR_ID,[id]),
     obtenerListaMascotas: ()=>pool.query(SQL_OBTENER_LISTA_MASCOTAS,[]),
@@ -128,5 +211,23 @@ module.exports = {
     obtenerCategoriaPorID: (id)=>pool.query(SQL_OBTENER_CATEGORIA_POR_ID,[id]),
     obtenerServicioPorClienteFecha: (cliente,fecha)=>pool.query(SQL_OBTENER_LISTA_SERVICIOS_POR_CLIENTES_POR_FECHA,[cliente, fecha]),
     obtenerServicioPorEstadoFecha: (estado,fecha)=>pool.query(SQL_OBTENER_LISTA_SERVICIOS_POR_ESTADO_POR_FECHA,[estado, fecha]),
+    
+    insertarArticulo: insertarArticulo,
+    obtenerListaArticulos: ()=>pool.query(SQL_OBTENER_LISTA_ARTICULOS,[]),
+    obtenerArticuloPorID: (id)=>pool.query(SQL_OBTENER_ARTICULO_POR_ID,[id]),
+    actualizarArticulo:actualizarArticulo,
+    eliminarArticulo: (id)=>pool.query(SQL_ELIMINAR_ARTICULO_POR_ID,[id]),
+
+    obtenerListaServicios: ()=>pool.query(SQL_OBTENER_LISTA_SERVICIOS,[]),
+    obtenerListaClientes: ()=>pool.query(SQL_OBTENER_LISTA_CLIENTES,[]),
+    obtenerMascotasPorCliente: (id_cliente)=>pool.query(SQL_OBTENER_MASCOTA_POR_CLIENTE,[id_cliente]),
+    obtenerListaTipoServicios: ()=>pool.query(SQL_OBTENER_LISTA_TIPO_SERVICIOS,[]),
+    insertarServicio: insertarServicio,
+
+    insertarVenta: insertarVenta,
+    obtenerListaVentas: ()=>pool.query(SQL_OBTENER_LISTA_VENTAS,[]),
+    
+
+
 
 }

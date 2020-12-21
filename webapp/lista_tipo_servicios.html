@@ -5,12 +5,11 @@
     <title>Enviar datos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./css/global.css">
+
   </head>
 
   <body>
-
     <div class="navbar">
       <!--<a href="index.html">Inicio</a>
       <a href="lista_mascotas.html">Mascotas</a>
@@ -26,23 +25,40 @@
       <a href="index.html">Inicio</a>
     </div>
     <br /><br />
-    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Mascotas</h1>
-
+    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Tipos de Servicios</h1>
     <!--<br />-->
-    <form action="./crear_mascota.html">
-      <input type="submit" value="Nueva Mascota" />
+    <form action="./crear_tipo_servicio.html">
+      <input type="submit" value="Nuevo Tipo de Servicio" />
     </form>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tipo de Servicio</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>8</td>
+          <td>Lavado</td>
+          <td><input type="button" value="Editar" /></td>
+          <td><input type="button" value="Eliminar" /></td>
+        </tr>
 
-    <table id="tblListaMascotas" class="styled-table">
-        <thead>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Cliente</th>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
+        <tr>
+          <td>9</td>
+          <td>Vacunacion</td>
+          <td><input type="button" value="Editar" /></td>
+          <td><input type="button" value="Eliminar" /></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Curacion</td>
+          <td><input type="button" value="Editar" /></td>
+          <td><input type="button" value="Eliminar" /></td>
+        </tr>
+      </tbody>
     </table>
   </body>
-  <script src="js/lista_mascotas.js" ></script>
 </html>

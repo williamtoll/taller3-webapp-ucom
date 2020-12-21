@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html>
+
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato);
+
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #1a1e23;
+      background-image: url("../images/pets.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      list-style-type: none;
+    }
+    li {
+      padding: 6px 0;
+    }
+    a {
+      position: relative;
+      display: block;
+      padding: 4px 0;
+      font-family: Lato, sans-serif;
+      color: #ffa600;
+      font-weight: bolder;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.5s;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #3498db;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.5s;
+    }
+
+    a:hover {
+      padding: 5px 5px;
+      color: white;
+      background-color: #ffa600;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  </style>
   <head>
-    <title>Crear nueva mascota</title>
+    <title>Pet Store - Iris Jara</title>
     <meta charset="UTF-8" />
-    <style>
-      input[type="text"],
-      select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-sizing: border-box;
-      }
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-      .btn-enviar {
-        width: 20%;
-        background-color: #45a049;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-      }
-
-      .btn-enviar:hover {
-        background-color: #000;
-      }
-
-      div {
-        border-radius: 5px;
-        background-color: #ccc;
-        padding: 20px;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-    </style>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
   </head>
 
   <body>
-    <a href="/servicios.html">Servicios</a>
-    <h3>Nueva Mascota</h3>
+    <div id="app"></div>
 
-    <div>
-      <label for="fname">Nombre</label>
-      <input type="text" id="nombre" name="nombre" placeholder="" />
+    <ul>
+      <!--<li><a href=""><i class="fa fa-paw" aria-hidden="true"></i>  Inicio</a></li>-->
+      <li><a href="./lista_mascotas.html"><i class="fa fa-paw" aria-hidden="true"></i>  Mascotas</a></li>
+      <li><a href="./lista_clientes.html"><i class="fa fa-paw" aria-hidden="true"></i>  Clientes</a></li>
+      <li><a href="./lista_servicios.html"><i class="fa fa-paw" aria-hidden="true"></i>  Servicios</a></li>
+      <li><a href="./lista_tipo_servicios.html"><i class="fa fa-paw" aria-hidden="true"></i>  Tipo de Servicios</a></li>
+      <li><a href="./lista_articulos.html"><i class="fa fa-paw" aria-hidden="true"></i>  Articulos</a></li>
+      <li><a href="./lista_ventas.html"><i class="fa fa-paw" aria-hidden="true"></i>  Ventas</a></li>
 
-      <label for="categoria">Tipo de mascota</label>
-      <select id="categoria" name="categoria">
-        <option value="1">Perro</option>
-        <option value="2">Gato</option>
-        <option value="3">Loro</option>
-        <option value="4">Hamster</option>
-        <option value="5">Tortuga</option>
-        <option value="6">Mono</option>
-        <option value="7">Conejo</option>
-      </select>
 
-      <button class="btn-enviar" id="btn-enviar">Enviar</button>
-    </div>
-
-    
-
+    </ul>
   </body>
-  <script src="index.js"></script>
 </html>

@@ -5,12 +5,10 @@
     <title>Enviar datos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./css/global.css">
   </head>
 
   <body>
-
     <div class="navbar">
       <!--<a href="index.html">Inicio</a>
       <a href="lista_mascotas.html">Mascotas</a>
@@ -26,23 +24,28 @@
       <a href="index.html">Inicio</a>
     </div>
     <br /><br />
-    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Mascotas</h1>
-
+    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Servicios</h1>
+    
     <!--<br />-->
-    <form action="./crear_mascota.html">
-      <input type="submit" value="Nueva Mascota" />
+    <form action="./crear_servicio.html">
+      <input type="submit" value="Nuevo Servicio" />
     </form>
-
-    <table id="tblListaMascotas" class="styled-table">
-        <thead>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Cliente</th>
-        </thead>
-        <tbody id="tbody">
-        </tbody>
+    <table id="tblListaServicios" class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Mascota</th>
+          <th>Categoria Mascota</th>
+          <th>Tipo de Servicio</th>
+          <th>Estado</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyListaServicios">
+      </tbody>
     </table>
   </body>
-  <script src="js/lista_mascotas.js" ></script>
+  <script src="js/lista_servicios.js" ></script>
+
 </html>

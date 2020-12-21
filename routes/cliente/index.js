@@ -28,6 +28,16 @@ router.get('/obtener-por-id/:id', cors(), async (req, res, next) => {
 
 });
 
+router.get('/obtener-lista', cors(), async (req, res, next) => {
+  console.log("obtener lista de clientes");
+  console.log("request ",req)
+
+  let result =await db.obtenerListaClientes()
+  console.log("result ",result.rows);
+  res.send(result.rows);
+
+});
+
 
 
 router.get('/test',cors(), async (req, res, next) => {

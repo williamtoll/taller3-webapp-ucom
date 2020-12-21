@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crear nueva mascota</title>
+    <meta charset="UTF-8" />
+    <style>
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+
+      .btn-enviar {
+        width: 20%;
+        background-color: #45a049;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .btn-enviar:hover {
+        background-color: #000;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #ccc;
+        padding: 20px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+  </head>
+
+  <body>
+    <a href="/servicios.html">Servicios</a>
+    <h3>Nueva Mascota</h3>
+
+    <div>
+      <label for="fname">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="" />
+
+      <label for="categoria">Tipo de mascota</label>
+      <select id="categoria" name="categoria">
+        <option value="1">Perro</option>
+        <option value="2">Gato</option>
+        <option value="3">Loro</option>
+        <option value="4">Hamster</option>
+        <option value="5">Tortuga</option>
+        <option value="6">Mono</option>
+        <option value="7">Conejo</option>
+      </select>
+
+      <button class="btn-enviar" id="btn-enviar">Enviar</button>
+    </div>
+
+    
+
+  </body>
+  <script src="index.js"></script>
+</html>

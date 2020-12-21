@@ -1,0 +1,165 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+      body {
+        /*display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;*/
+        background-image: url("../images/pets2.png");
+        background-repeat: repeat;
+        background-attachment: fixed;
+       /* background-size: 100% 100%;*/
+        font-family: Lato, sans-serif;
+
+       /* background: #1a1e23;*/
+      }
+      a {
+        position: relative;
+        text-align: right;
+        display: block;
+        padding: 4px 0;
+        font-family: Lato, sans-serif;
+        color: #ecf0f1;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+      }
+      h1 {
+        position: relative;
+        display: block;
+        padding: 4px 10px;
+        font-family: Lato, sans-serif;
+        color: #ffa600;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-color: white;
+      }
+      .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: Lato, sans-serif;
+        min-width: 400px;
+        width: 100%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .styled-table thead tr {
+        background-color: #ffa600;
+        color: #ffffff;
+        text-align: left;
+      }
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+        text-align: center;
+      }
+
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      .styled-table tbody tr:nth-child(odd) {
+        background-color: #aaa;
+      }
+
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #ffa600;
+      }
+/*
+      .styled-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+      }*/
+
+      .styled-table tbody tr:hover {
+        background-color: #faca70;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+
+        font-family: Lato, sans-serif;
+        background-color: #ffa600;
+        color: white;
+        padding: 10px 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #ffa600;
+      }
+
+      input[type="button"] {
+        /*width: 100%;*/
+
+        font-family: Lato, sans-serif;
+        background-color: #ffa600;
+        color: white;
+        padding: 5px 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+ 
+    .back {
+      border-radius: 5px;
+      background-color: #ccc;
+      padding: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* The navigation bar */
+.navbar {
+  /*overflow: hidden;*/
+  overflow:auto;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Main content */
+.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+}

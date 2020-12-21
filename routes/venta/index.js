@@ -20,82 +20,35 @@ const {
 
 //Ejemplo de como recibir parametros en la petición GET, en este caso recibido el parametro id
 router.get('/obtener-por-id/:id', cors(), async (req, res, next) => {
-  console.log("obtener mascota por ID ", req.params.id);
+  console.log("obtener articulo por ID ", req.params.id);
 
   let result = await db.obtenerMascotaPorID(req.params.id);
-  console.log("mascotas", result[0]);
-  res.send(result.rows);
-
-});
-
-router.get('/obtener-por-categoria', cors(), async (req, res, next) => {
-  console.log("obtener mascota por categoria");
-  console.log("request ",req)
-  console.log("id_categoria",req.query.id_categoria)
-  let result =await db.obtenerMascotasPorCategoria(req.query.id_categoria);
-  console.log("result ",result);
+  console.log("articulo", result[0]);
   res.send(result.rows);
 
 });
 
 
-router.get('/obtener-por-cliente-tipo', cors(), async (req, res, next) => {
-  console.log("obtener mascota por cliente - tipo");
-  console.log("request ",req)
-  console.log("nombre_cliente",req.query.nombre_cliente)
-  console.log("tipo_mascota ",req.query.tipo_mascota)
-  console.log("nombre_mascota ",req.query.nombre_mascota)
 
-
-  let result =await db.obtenerMascotasPorClienteTipo(req.query)
-  console.log("result ",result);
-  res.send(result);
-
-});
 
 router.get('/obtener-lista', cors(), async (req, res, next) => {
-  console.log("obtener lista mascotas");
+  console.log("obtener lista de ventas");
   console.log("request ",req)
 
-
-
-  let result =await db.obtenerListaMascotas()
+  let result =await db.obtenerListaVentas()
   console.log("result ",result.rows);
   res.send(result.rows);
 
 });
 
-/*router.get('/obtener-por-cliente', cors(), async (req, res, next) => {
-  console.log("obtener mascota por cliente");
-  console.log("request ",req)
-  console.log("nombre_cliente",req.query.nombre_cliente)
-  console.log("tipo_mascota ",req.query.tipo_mascota)
-  console.log("nombre_mascota ",req.query.nombre_mascota)
-
-
-  let result =await db.obtenerMascotasPorCliente(req.query.id_cliente)
-  console.log("result ",result);
-  res.send(result);
-
-});*/
-
-router.get('/obtener-por-cliente/:id_cliente', cors(), async (req, res, next) => {
-  console.log("obtener mascota por id_cliente ", req.params.id_cliente);
-
-  let result = await db.obtenerMascotasPorCliente(req.params.id_cliente);
-  console.log("mascotas", result[0]);
-  res.send(result.rows);
-
-});
-
-//Ejemplo de como insertar una mascota, le pasamos los datos del req.body a la función insertarMascota
+//Insertar un articulo, le pasamos los datos del req.body a la función insertarArticulo
 router.post('/insertar',cors(),async(req,res,next)=>{
-  console.log("insertar mascota")
+  console.log("insertar venta")
   var result={};
   console.log("params", req.body);
 
-  var mascota=req.body;
-  result= await db.insertarMascota(mascota);
+  var venta=req.body;
+  result= await db.insertarVenta(venta);
 
   if(result.rows){
       res.send(result.rows[0]);
