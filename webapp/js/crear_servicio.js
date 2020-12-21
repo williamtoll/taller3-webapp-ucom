@@ -1,4 +1,4 @@
-function listaClientes() {
+  function listaClientes() {
     axios
       .get("/cliente/obtener-lista", {
         params: {
@@ -162,7 +162,5 @@ botonPost.addEventListener("click", function () {
       alert("Error no se pudo agregar el servicio");
 
     })
-    .finally(function () {});
-    setTimeout(console.log.bind(null, 'Two second later'), 10000);
-    location.href = './lista_servicios.html'
+    .finally(function () { location.href = './lista_servicios.html';});   
 });

@@ -1,110 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    @import url(https://fonts.googleapis.com/css?family=Lato);
+  <head>
+    <title>Crear nueva mascota</title>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <link rel="stylesheet" href="./css/global.css">
 
-    body {
-      font-family: Lato, sans-serif;
+  </head>
 
-      background: #1a1e23;
-    }
-
-    h1 {
-      position: relative;
-      display: block;
-      padding: 4px 10px;
-      font-family: Lato, sans-serif;
-      color: #ecf0f1;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: 0.5s;
-    }
-    input[type="text"],
-    select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    input[type="submit"],
-    input[type="button"] {
-      /*width: 40%;*/
-      min-width: 200px;
-      font-family: Lato, sans-serif;
-      background-color: #009879;
-      color: white;
-      padding: 10px 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #009879;
-    }
-
-    .back {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-  </style>
-  <script>
-    const nombre = document.getElementById("name");
-    const status = document.getElementById("status");
-
-    formElement.onsubmit = function (e) {
-      e.preventDefault();
-
-      let params = {
-        name: nombre,
-        status: status
-      };
-      axios
-        .post("https://petstore.swagger.io/v2/pet/1", params, {
-          headers: {}
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
-    };
-  </script>
   <body>
-    <h1>Nueva Mascota</h1>
+    <div class="navbar">
+      <!--<a href="index.html">Inicio</a>
+      <a href="lista_mascotas.html">Mascotas</a>
+      <a href="lista_clientes.html">Clientes</a>
+      <a href="lista_servicios.html">Servicios</a>
+      <a href="lista_articulos.html">Articulos</a>
+      <a href="lista_ventas.html">Ventas</a>-->
+      <a href="lista_ventas.html">Ventas</a>
+      <a href="lista_articulos.html">Articulos</a>
+      <a href="lista_servicios.html">Servicios</a>
+      <a href="lista_clientes.html">Clientes</a>
+      <a href="lista_mascotas.html">Mascotas</a>
+      <a href="index.html">Inicio</a>
+    </div>
+    <br /><br />
+    <h1 ><i class="fa fa-paw" aria-hidden="true"></i> Nueva Mascota</h1>
 
     <div class="back">
-      <form action="">
-        <label for="fname">Nombre</label>
-        <input type="text" id="fname" name="nombre" placeholder="Nombre" />
+      <label for="fname">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="" />
 
-        <label for="categoria">Categoria</label>
-        <select id="categoria" name="country">
-          <option value="1">Perro</option>
-          <option value="2">Gato</option>
-          <option value="3">Tortuga</option>
-        </select>
+      <label for="categoria">Tipo de mascota</label>
+      <select id="categoria" name="categoria">
+        <option value="1">Perro</option>
+        <option value="2">Gato</option>
+        <option value="3">Loro</option>
+        <option value="4">Hamster</option>
+        <option value="5">Tortuga</option>
+        <option value="6">Mono</option>
+        <option value="7">Conejo</option>
+      </select>    
 
-        <label for="cliente">Cliente</label>
-        <select id="cliente" name="cliente">
-          <option value="1">Jos&eacute; Lopez</option>
-          <option value="2">Cristiano Ronaldo</option>
-          <option value="3">Alfredo Cazenave</option>
-        </select>
-        <br /><br />
-        <input type="submit" value="Enviar" />
-        <input
-          type="button"
-          onclick="location.href = './lista_mascotas.html';"
-          value="Salir"
-        />
-      </form>
+      <br /><br />
+      <input type="button" id="btn-enviar" value="Guardar" />
+      <input
+        type="button"
+        onclick="location.href = './lista_mascotas.html';"
+        value="Salir"
+      />    
     </div>
+
+    
+
   </body>
+  <script src="js/crear_mascota.js"></script>
 </html>

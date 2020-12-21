@@ -27,7 +27,7 @@ function listaMascotas() {
             var cell4 = row.insertCell(3);
         
             // Agregamos a la celda los valores que obtenemos de la lista 
-            cell1.innerHTML = "" + value.id;
+            cell1.innerHTML = "" + value.id_mascota;
             cell2.innerHTML = "" + value.nombre_mascota ;
             cell3.innerHTML = "" + value.tipo;
             cell4.innerHTML = "" + value.nombre_cliente + " " + value.apellido_cliente;

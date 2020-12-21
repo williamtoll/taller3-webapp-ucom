@@ -91,7 +91,7 @@ const SQL_OBTENER_LISTA_SERVICIOS="select s.id_servicio, "+
 "left join mascota m on m.id_mascota =s.id_mascota "+
 "left join categoria cat on cat.id =m.id_categoria "+
 "left join tipo_servicio ts on ts.id_tipo_servicio =s.id_tipo_servicio "+
-"order by s.fecha_servicio desc";
+"order by s.id_servicio desc";
 
 const SQL_OBTENER_LISTA_CLIENTES="select * from cliente ";
 const SQL_OBTENER_MASCOTA_POR_CLIENTE="select m.id_mascota, m.nombre from mascota m "+
@@ -111,7 +111,7 @@ function insertarMascota(datos){
     console.log("db => insertarMascota ")
     console.log("datos =>", datos)
     try {
-        const res = pool.query(SQL_INSERTAR_MASCOTA,[56,datos.nombre,datos.id_categoria]);
+        const res = pool.query(SQL_INSERTAR_MASCOTA,[datos.nombre,datos.id_categoria]);
         console.log("res", res);
         return res;
     } catch(err) {
